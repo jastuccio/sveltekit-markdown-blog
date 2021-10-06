@@ -1,5 +1,6 @@
 <script context="module">
-	const localPosts = import.meta.glob('./blog/*.{md, svx}');
+	// const localPosts = import.meta.glob('./*.{svx, md}');
+	const localPosts = import.meta.glob('./*.*');
 
 	let body = [];
 	for (let path in localPosts) {
@@ -29,7 +30,8 @@
 
 {#each posts as { path, metadata: { title } }}
 	<li>
-		<a href={`/${path.replace('.md', '')}`}>{title}</a>
-		<!-- <a href={`/${path.replace(/\..*/g, '')}`}>{title}</a> -->
+		<a href={`/blog/${path.replace('.md', '').replace('.svx', '')}`}>{title}</a>
+
+		<!-- <a href={`/blog/${path.replace(/\..*/g, '')}`}>{title}</a> -->
 	</li>
 {/each}
