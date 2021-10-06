@@ -34,8 +34,9 @@
 
 {#each posts as { path, metadata: { title } }}
 	<li>
-		<!-- <a href={`/blog/${path.replace('.md', '').replace('.svx', '')}`}>{title}</a> -->
-
-		<!-- <a href={`/blog/${path.replace(/\..*/, '')}`}>{title}</a> -->
+		<!-- ---------------------------------------------------------
+		struggling to get this regex working 
+		--------------------------------------------------------- -->
+		<a href={`/blog/${path.replace(/\..*/, '')}`}>{title}</a>
 	</li>
 {/each}
