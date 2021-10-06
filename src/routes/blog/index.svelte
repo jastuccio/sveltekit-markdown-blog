@@ -30,7 +30,7 @@
 	export let posts;
 </script>
 
-<!-- {JSON.stringify(posts)} -->
+<h1>Blog</h1>
 
 {#each posts as { path, metadata: { title } }}
 	<li>
