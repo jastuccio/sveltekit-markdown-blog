@@ -1,6 +1,10 @@
-<script context="module">
+<script context="module" lang="ts">
 	// const localPosts = import.meta.glob('./*.{svx, md}');
-	const localPosts = import.meta.glob('./*.*');
+
+	/* * glob imports come from vite
+	 * https://vitejs.dev/guide/features.html#glob-import
+	 */
+	const localPosts = import.meta.glob('./*.{md,svx}');
 
 	let body = [];
 	for (let path in localPosts) {
@@ -32,6 +36,6 @@
 	<li>
 		<a href={`/blog/${path.replace('.md', '').replace('.svx', '')}`}>{title}</a>
 
-		<!-- <a href={`/blog/${path.replace(/\..*/g, '')}`}>{title}</a> -->
+		<!-- <a href={`/blog/${path.replace(/\..*/, '')}`}>{title}</a> -->
 	</li>
 {/each}

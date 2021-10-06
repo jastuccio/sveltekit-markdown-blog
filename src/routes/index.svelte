@@ -1,35 +1,4 @@
-<script context="module">
-	const localPosts = import.meta.glob('./blog/*.{md, svx}');
-
-	let body = [];
-	for (let path in localPosts) {
-		body.push(
-			localPosts[path]().then(({ metadata }) => {
-				return { path, metadata };
-			})
-		);
-	}
-
-	export const load = async () => {
-		const posts = await Promise.all(body);
-
-		return {
-			props: {
-				posts
-			}
-		};
-	};
+<script lang="ts">
 </script>
 
-<script>
-	export let posts;
-</script>
-
-<!-- {JSON.stringify(posts)} -->
-
-{#each posts as { path, metadata: { title } }}
-	<li>
-		<a href={`/${path.replace('.md', '')}`}>{title}</a>
-		<!-- <a href={`/${path.replace(/\..*/g, '')}`}>{title}</a> -->
-	</li>
-{/each}
+<h1>My website</h1>
