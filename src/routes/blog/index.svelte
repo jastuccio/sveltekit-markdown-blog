@@ -32,8 +32,31 @@
 
 <h1>Blog</h1>
 
-{#each posts as { path, metadata: { title } }}
+{#each posts as { path, metadata: { title, tags } }}
 	<li>
 		<a href={`/blog/${path.replace('.md', '').replace('.svx', '')}`}>{title}</a>
+
+		<p>
+			{#each tags as tag}
+				<a class="tag" href={`/tags/${tag}`}>#{tag}</a>
+			{/each}
+		</p>
 	</li>
 {/each}
+
+<style>
+	p {
+		margin: 0;
+	}
+	li {
+		margin-bottom: 20px;
+	}
+	.tag {
+		text-decoration: none;
+		margin-right: 10px;
+		color: #555;
+	}
+	.tag:hover {
+		color: blue;
+	}
+</style>

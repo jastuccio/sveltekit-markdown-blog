@@ -1,5 +1,8 @@
 ---
-title: 2
+title: Todo app I use
+tags:
+  - personal
+  - tech
 ---
 
 # {title}

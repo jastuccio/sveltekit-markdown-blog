@@ -1,5 +1,7 @@
 ---
-title: III
+title: investing
+tags:
+  - personal
 ---
 
 # {title}
