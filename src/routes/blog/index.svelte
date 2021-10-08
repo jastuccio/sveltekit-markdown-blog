@@ -34,7 +34,7 @@
 
 {#each posts as { path, metadata: { title, tags } }}
 	<li>
-		<a href={`/blog/${path.replace('.md', '').replace('.svx', '')}`}>{title}</a>
+		<a href={`/blog${path.replace(/\.\.*\w*/gi, '')}`}>{title}</a>
 
 		<p>
 			{#each tags as tag}
