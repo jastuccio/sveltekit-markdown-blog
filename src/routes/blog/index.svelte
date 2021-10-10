@@ -1,4 +1,5 @@
-<script context="module" lang="ts">
+<!-- lang="ts" -->
+<script context="module">
 	// const localPosts = import.meta.glob('./*.{svx, md}');
 
 	/* * glob imports come from vite
@@ -16,23 +17,37 @@
 	}
 
 	export const load = async () => {
-		const posts = await Promise.all(body);
+		const localPosts = await Promise.all(body);
 
 		return {
 			props: {
-				posts
+				localPosts
 			}
 		};
 	};
 </script>
 
+<!-- lang="ts" -->
 <script>
-	export let posts;
+	// export let localPosts: [];
+	export let localPosts = [];
+	console.log('unsorted: ', localPosts);
+
+	const dateSortedPosts = localPosts.sort((post1, post2) => {
+		return new Date(post2.metadata.date) - new Date(post1.metadata.date);
+	});
+	console.log('sorted: ', dateSortedPosts);
+
+	// const postsSortedByDate = localPosts.slice().sort((post1, post2) => {
+	// 	return new Date(post2.metadata.date) - new Date(post1.metadate.date);
+	// });
+
+	// console.log('sorted', postsSortedByDate);
 </script>
 
 <h1>Blog</h1>
 
-{#each posts as { path, metadata: { title, tags } }}
+{#each localPosts as { path, metadata: { title, tags, date } }}
 	<li>
 		<a href={`/blog${path.replace(/\.\.*\w*/gi, '')}`}>{title}</a>
 
@@ -41,6 +56,7 @@
 				<a class="tag" href={`/tags/${tag}`}>#{tag}</a>
 			{/each}
 		</p>
+		<p>{new Date(date).toDateString()}</p>
 	</li>
 {/each}
 
